@@ -1,0 +1,625 @@
+REACT.JS
+VIRTUAL DOM...
+React.js framework it's a tool to build UIs - a JavaScript library for building user interfaces.
+***react is a javascript library for building user interfaces..
+***single page application means without page refresh and reload....
+***iam trying to accessing the flipcart, request goes to server first time we will get the html response..
+and it will load entire pages in our browser second request onwards just we sending the react request we get the json data without page refreshing...
+***state management...
+for effective statement at client side we want use some mechanism , for main objective we want some libraries or framework to 
+develop singlepageapplication and to maintain state effective client page -state management....
+***' page we creating nav bar, header, footer, slider,search bar,form,table these are all called components and reuseable components - component driven architecture...
+***only main objective why we are using react.js means only for SPA-single page application... 
+***if we know react native we can use anywhere in web application and mobile application... (learn once, write anywhere)...
+
+
+npx...(node package runner):-
+***npx create-react-app react-3...
+***cd react-3
+***npm start
+
+rules...
+1.react application- name should not start with title card(uppercase)
+2.dont use react keywords as project name...
+
+npm...(node package manager):-
+***npm i create-react-app
+***create-react-app react-3
+***cd react-3
+***npm start
+
+how to find react version...
+*** npm view react version
+
+react CDN links...
+***index.html CDN links and babel CDN link also...
+ 
+after installation...we get
+my-app (react app)
+  |
+  |--public ----it contains (index.html)-react app-template file
+  |
+  |--node-modules --- it contains the (javascript dependices)
+  |
+  |--src ----it contains few files ----1.index.js,2.app.js,3.index.css,4.app.css
+  |
+  |--package.json ---
+  |--package-lock.json
+  |
+  |
+  
+app.js = React Application - Root Components
+
+what is components:-
+component means function , function is a group of statement, react component responsibility is render the user interface.
+a piece of reuseable ui code ,there are two component *class, * function..
+
+how to create a function component:-
+using functional component...
+file name and function name is same only and first letter will be in caps...
+Message.js
+**
+import React from 'react'
+function message(){
+        return <div> 
+                 //ui code
+               <div/>
+export default message  =====(normal function)
+**
+import React from 'react'
+let message =()=>{
+return <div> 
+          //ui code
+       <div/>
+}
+export default message =====(fat arrow function)
+
+how to create a class component:-
+class react.component{
+render(){}
+componentDidMount(){}
+//...Methods
+class Message extends React.Components{
+render(){
+return <div></div>
+}
+}
+
+***
+import React from 'react'
+class Navbar extends React.Component{
+render(){
+ return <nav>
+          <a href="#">React Example</a>
+        <nav>
+  }
+ }
+export default Navbar
+ 
+use of inheritance function:-
+to return something we cant write the return statement directly inside
+a class so we want one special method that is we taken from the react component ,
+react component have some methods are there we are overridding the render method 
+to return the ui code...
+rules ==we cant write the return statement directly in the class definetly we want
+ one method is required iam taking that method to get the special method and applying 
+ the inheritence method ..
+step 1==import react 
+step 2==create a class, that should extends react.component
+step 3==to return the ui, we are overridding render(){}
+step 4==export the component
+
+props:-
+props is maintaining the communication between components...
+to communicating between component we are using props...
+so we are sending the any kind of data from *functional component-| functional component
+                                                      | class component
+                                *class component -| functional component
+                                                  | class component
+==============================================================================================
+functional component:-                               
+import React from "react";                           
+import CompB from "./CompB";
+let CompA=()=> {
+    let emp={ id:101,
+        name:"dinesh"}
+        let emps={ id:102,
+            one:"dinesh",
+            two :"kumar" 
+        }
+    return <div>
+           <h2>component-A</h2>
+           <hr/>
+           <CompB done={emps} message={emp}/>
+          </div>
+    }
+export default CompA
+
+
+class component:-
+import React from "react";
+class CompB extends React.Component{
+    render(){
+        return <div>
+            <h2>component-B</h2>
+             <pre>XYZ:{JSON.stringify(this.props.done)}</pre>
+             <h3>employee:{JSON.stringify(this.props.message)}</h3>
+        </div>
+    }
+}
+export default CompB
+
+====================================================================================
+functional component:-
+
+import Employee from "./employee"
+let User = () =>{
+    let uid=101;
+    let  uname="dinesh";
+        
+    return <div>
+        <h2>user-component</h2>
+        <hr/>
+        <Employee  x={100} y={"good evening"} id={uid} uid={uname}/>
+    </div>
+}
+export default User
+
+functional component:-
+
+let Employee =(props)=>{
+    return <div>
+        <h2>Employee-component</h2>
+        <hr />
+        <pre>{JSON.stringify(props)}</pre>
+    </div>
+}
+export default Employee
+
+=======================================================================================
+class component:-
+
+import React from "react"
+import Employee from "./Employee"
+class User extends React.Component{
+    employee= {
+        uid:101,
+        uname:"Dinesh",
+        ugender:"Male",
+        uloc:"Bengaluru"
+    }
+    render(){
+        return <div>
+            <h2>component-A</h2>
+            <hr />
+            <Employee id={this.employee.uid} name={this.employee.uname} gender={this.employee.ugender} location={this.employee.uloc}/>
+        </div>
+    }
+}
+export default User
+
+
+
+class component:-
+
+import React from "react"
+class Employee extends React.Component{
+    render(){
+      return <div>
+        <h2>component-B</h2>
+        <hr />
+        <h2>ID:{JSON.stringify(this.props.id)} </h2>
+        <h2>NAME:{JSON.stringify(this.props.name)}</h2>
+        <h2>GENDER:{JSON.stringify(this.props.gender)}</h2>
+        <h2>LOCATION:{JSON.stringify(this.props.location)}</h2>
+      </div>
+    }
+}
+export default Employee
+
+==========================================================================
+class component:-
+
+import React from "react"
+import Employee from "./Employee"
+class User extends React.Component{
+    employee= {
+        uid:101,
+        uname:"Dinesh",
+        ugender:"Male",
+        uloc:"Bengaluru"
+    }
+    render(){
+        return <div>
+            <h2>component-A</h2>
+            <hr />
+            <Employee id={this.employee.uid} name={this.employee.uname} gender={this.employee.ugender} location={this.employee.uloc}/>
+        </div>
+    }
+}
+export default User
+
+functional component:-
+
+import React from "react"
+let Employee =(props) =>{
+    
+      return <div>
+        <h2>component-B</h2>
+        <hr />
+        <h2>ID:{JSON.stringify(props.id)} </h2>
+        <h2>NAME:{JSON.stringify(props.name)}</h2>
+        <h2>GENDER:{JSON.stringify(props.gender)}</h2>
+        <h2>LOCATION:{JSON.stringify(props.location)}</h2>
+      </div>
+    
+}
+export default Employee
+============================================================================
+****Navbar:-
+
+import React from 'react'
+
+class Navbar extends React.Component {
+  render() {
+    return <nav className='navbar navbar-dark bg-dark navbar-expand-lg'> 
+    <a href='#' className='navbar-brand'>ReactComponent</a> 
+        <div className='ml-auto'>
+        
+        <ul className='navbar-nav'>
+       <li className='nav-list'> <a href='#' className='nav-link'>HOME</a></li>
+       <li className='nav-list'> <a href='#' className='nav-link'>ABOUT</a></li>
+       <li className='nav-list'> <a href='#' className='nav-link'>CONTACT</a></li>
+        </ul>
+      </div>
+      </nav>
+    
+  }
+}
+
+export default Navbar
+
+============================================================================
+
+Props drilling:-
+
+*****
+import React from "react"
+import CompB from "./CompB"
+const CompA =()=>{
+    let Eid = 101;
+    let Ename = "Dinesh";
+    let Eloc = "Bangalore";
+    let Egender = "Male"
+            
+    return <div>
+        <h1>component-a</h1>
+     <CompB emp_id ={Eid} emp_name={Ename} emp_loc={Eloc} emp_gen={Egender}/>
+    </div>
+}
+export default CompA
+*****
+import React from "react";
+import CompC from "./CompC";
+const CompB = (props) => {
+    return (
+        <div>
+            <h1>component-b</h1>
+            <pre>{JSON.stringify(props)}</pre>
+            <CompC Name={props.emp_name} ID={props.emp_id} LOC={props.emp_loc}/>
+        </div>
+    );
+}
+
+export default CompB;
+*****
+import React from "react";
+import CompD from "./CompD";
+const CompC = (props) =>{
+    return <div>
+        <h1>Component-c</h1>
+        <pre>{JSON.stringify(props)}</pre>
+        <CompD Name={props.Name} Id ={props.ID}/>
+    </div>
+}
+export default CompC
+*****
+import React from "react"
+const CompD =(props)=>{
+    return <div>
+        <h1>component-D</h1>
+        <pre>{JSON.stringify()}</pre>
+        <h4>Employee Name:{props.Name}</h4>
+
+    </div>
+}
+export default CompD
+
+
+===========================================================================
+what is state ?
+ component own data.
+how to manage the state?
+ to using class and functional components..
+   class -state /setState..
+   functional - useState
+   
+****State /setState.. 
+import React from 'react'
+
+ class Message extends React.Component{
+   state={
+      Msg : " hello"
+   } 
+   gmhandler=()=>{
+    this.setState ({Msg :"good morning"})
+   }
+   gnhandler=()=>{
+    this.setState ( {Msg: "good night"})
+   }
+  render() {
+    return (
+      <div>
+        <h1>MESSAGE:{this.state.Msg}</h1>
+        <button onClick={this.gmhandler}>GM</button>
+        <button onClick={this.gnhandler}>GN</button>
+        <button onClick={()=>{this.setState ({Msg: "good afternoon"})}}>GA</button>
+        
+      </div>
+    )
+  }
+}
+
+export default Message
+
+******  
+ useState :-
+  let [msg, setmsg] = useState("hello")
+****
+import React, { useState } from "react";
+
+function Message() {
+    let [msg, setMsg] = useState("Hello");
+
+    let gmHandler = () => {
+        setMsg("Good Morning");
+    };
+
+    let gnHandler = () => {
+        setMsg("Good Night");
+    };
+
+    return (
+        <div>
+            <h1>useState</h1>
+            <h3>Value: {msg}</h3>
+            <button onClick={gmHandler}>GM</button>
+            <button onClick={gnHandler}>GN</button>
+            <button onClick={()=>{setMsg("goodevening")}}>GE</button>
+        </div>
+    );
+}
+
+export default Message;
+
+
+==============================================================================
+Event Handling:-
+
+*****
+import React from "react"
+
+class Button extends React.Component{
+    state ={
+        Message :"hello" 
+    }
+    
+    
+    GnHandler=()=>{
+        this.setState ({ Message : "good night"})
+    }
+
+    render(){
+        return <div>
+            <h1>Button-component</h1>
+            <h2>Message: {this.state.Message}</h2>
+            <button onClick={()=>this.setState ({Message : " good morning"}) } >gm</button> 
+            <button onClick={this.GnHandler}>gn</button>
+        </div>
+    }
+}
+export default Button
+
+*****
+import React from "react"
+
+class Button extends React.Component{
+    state ={
+        qty : 1 
+    }
+    
+   
+    increHandler=()=>{
+        this.setState ({qty: this.state.qty + 1 })
+    }
+
+    render(){
+        return <div>
+            <h1>Button-component</h1>
+            <h2>QTY: {this.state.qty}</h2>
+            <button onClick={()=>{this.setState({qty:this.state.qty-1})}} >decre</button> 
+            <button onClick={this.increHandler}>incre</button>
+        </div>
+    }
+}
+export default Button
+
+===========================================================================
+Table handling:-
+
+import React from "react";
+let Employee=()=>{
+    let employee=[{"Eid":1,"Ename":"Steve","Email":"sbourke0@utexas.edu"},
+      {"Eid":32,"Ename":"Honor","Email":"hrozeav@discuz.net"},
+      {"Eid":33,"Ename":"Tammy","Email":"tdykasw@ox.ac.uk"},
+      {"Eid":34,"Ename":"Bowie","Email":"bgammetx@nymag.com"},
+      {"Eid":69,"Ename":"Nat","Email":"npolgreen1w@smugmug.com"},
+      {"Eid":70,"Ename":"Rodina","Email":"rhesbrook1x@nymag.com"}]
+  return <div>
+    <table border={2}>
+        <thead>
+            <tr className="text-danger">
+            <th>ID</th>
+            <th>NAME</th>
+            <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {
+                employee.map((emp)=>{
+                  return <tr key={emp.id} className="text-primary">
+                    <td>{emp.Eid}</td>
+                    <td>{emp.Ename}</td>
+                    <td>{emp.Email}</td>
+                  </tr>
+                })
+            }
+        </tbody>
+    </table>
+  </div>
+    
+}
+export default Employee
+
+=============================================================================
+***product incrementing price and qty :-
+import React, { Component } from 'react'
+
+export class Product extends Component {
+    state={
+      product_name : "Apple iPhone 15 (Black, 128 GB)" ,
+      image : "https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/h/d/9/-original-imagtc2qzgnnuhxh.jpeg?q=70"  ,
+      price : 64999, 
+      qty : 1,
+      total_price : 64999  
+    }  
+    increHandler=()=>{
+      this.setState({qty: this.state.qty +1})
+     }                                                      
+     decreHandler=()=>{
+         this.setState({qty: this.state.qty -1})
+        }
+  render() {
+    return (
+      <div>
+        <br />
+        <div className="container">
+            <div className="row">
+                <div className="col-10">
+                   <table className='table table-hover' border={2}>
+                    <thead className='bg-info'>
+                    <th>PNAME</th>
+                    <th>IMAGE</th>
+                    <th>PRICE</th>
+                    <th>QTY</th>
+                    <th>TOTAL PRICE</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{this.state.product_name}</td>
+                            <td><img width={100} src={this.state.image}></img></td>
+                            <td>{this.state.price}</td>
+                            <td><i class="fa fa-minus-circle" onClick={this.decreHandler}></i>
+                              {this.state.qty}
+                              <i class="fa fa-plus-circle" onClick={this.increHandler}></i></td>
+                              <td>{this.state.qty * this.state.price}</td>
+                        </tr>
+                    </tbody>
+                   </table>
+                </div>
+            </div>
+        </div>
+        
+      </div>
+    )
+  }
+}
+
+export default Product
+
+***using separator...
+export class Product extends Component {
+    state={
+      stock : {
+      product_name : "Apple iPhone 15 (Black, 128 GB)" ,
+      image : "https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/h/d/9/-original-imagtc2qzgnnuhxh.jpeg?q=70"  ,
+      price : 64999, 
+      qty : 1,
+      total_price : 64999  
+    }  }
+    increHandler=()=>{
+      this.setState({stock: {...this.state.stock , qty: this.state.stock.qty +1}})
+     }                                                      
+     decreHandler=()=>{
+         this.setState({qty: this.state.stock.qty -1})
+        }
+====================================================================================
+event binding;-
+
+import React from 'react'
+
+class Message extends React.Component {
+    state={
+Msg : "hello"
+    }
+    gmHandler=(Msg)=>{
+      this.setState ({Msg:Msg})
+    }
+    render(){
+  return (
+    <div>
+       <h1>Msg:{ this.state.Msg}</h1>
+       <button onClick={this.gmHandler.bind(this,'gm')}>GM</button>
+       <button onClick={this.gmHandler.bind(this,'ga')}>GA</button>
+       <button onClick={this.gmHandler.bind(this,'gn')}>GN</button>
+      
+    </div>
+  )
+}
+}
+
+export default Message
+
+example1;-
+
+import React from 'react'
+
+class Message extends React.Component {
+    state={
+sal : 30000
+    }
+    salHandler=(value)=>{
+      this.setState ({sal:30000+ value})
+    }
+    render(){
+  return (
+    <div>
+       <h1>SALARY:{ this.state.sal}</h1>
+       <button onClick={this.salHandler.bind(this, 50000)}>hike50k</button>
+       <button onClick={this.salHandler.bind(this, 100000)}>hike100k</button>
+       <button onClick={this.salHandler.bind(this, 0)}>hike0</button>
+      
+    </div>
+  )
+}
+}
+
+export default Message
+
+
+
+=============================================================================
+   componentDidMount()
+   useEffect=()=>{},[]
+   
+ 
